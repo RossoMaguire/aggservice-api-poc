@@ -21,11 +21,3 @@ curl http://localhost:9991/operations/Product?="radiowave-shirt"
 ## Learn More
 
 Read the [Docs](https://wundergraph.com/docs).
-
-## Deploy to WunderGraph Cloud
-
-[![Deploy to WunderGraph](https://wundergraph.com/button)](https://cloud.wundergraph.com/new/clone?templateName=simple)
-
-## Got Questions?
-
-Join us on [Discord](https://wundergraph.com/discord)!
