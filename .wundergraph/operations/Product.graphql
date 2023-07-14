@@ -1,0 +1,56 @@
+query (
+  $slug: ID!
+  # the @internal directive removes the $handle variable from the public API
+  # this means, the user can't set it manually
+  # this variable is our JOIN key
+  $handle: String! @internal
+) {
+  wordpress_product(id: $slug, idType: SLUG) {
+    title
+    productFields {
+      title
+      description
+      technicalDetails
+      video
+      image {
+        node {
+          mediaItemUrl
+        }
+      }
+    }
+    slug @export(as: "handle")
+    _join {
+      # once we're inside the _join field, we can use the $slug variable to join the shopify API
+      shopify_product(handle: $handle) {
+        collections(first: 100) {
+            nodes {
+                handle
+                title
+            }
+        }
+        variants(first: 100) {
+            nodes {
+                id
+                sku
+                quantityAvailable
+                image {
+                url
+                }
+                selectedOptions {
+                name
+                value
+                }
+                price {
+                amount
+                currencyCode
+                }
+                compareAtPrice {
+                amount
+                currencyCode
+                }
+            }
+        }
+      }
+    }
+  }
+}
