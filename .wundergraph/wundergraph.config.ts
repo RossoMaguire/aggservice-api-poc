@@ -24,7 +24,7 @@ configureWunderGraphApplication({
 	},
 	cors: {
 		...cors.allowAll,
-		allowedOrigins: ['http://localhost:5173/'],
+		allowedOrigins: ['http://localhost:5173/', 'https://aggservice-product-i4kb4yik6-rossomaguire.vercel.app/'],
 	},
 	security: {
 		enableGraphQLEndpoint: process.env.NODE_ENV !== 'production' || process.env.GITPOD_WORKSPACE_ID !== undefined,
